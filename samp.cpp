@@ -71,7 +71,7 @@ int main(int argc, char * argv[])
 
 				Audio<i16> result = a1 + a2;
 				cout << "Result object created" << endl;
-				result.saveFile(result.data, outputFile, numSamples);
+				saveFile(result.data, outputFile, numSamples);
 			}
 			else
 			{
