@@ -66,7 +66,7 @@ int main(int argc, char * argv[])
 				Audio<i16> a1(data1, sampleRate, numBits);
 				Audio<i16> a2(data2, sampleRate, numBits);
 				cout << "Audio objects created" << endl;
-				cout << "First element of a1.data is " << a1.data[0] << endl;
+				cout << "size of a1.data is " << a1.data.size() << endl;
 
 				Audio<i16> result = a1 + a2;
 				cout << "Result object created" << endl;
