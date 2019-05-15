@@ -88,8 +88,8 @@ class Audio{
 
 		/* --------------Overloaded Operators----------------------------------*/
 
-		//Add operator +
-		Audio<T> operator+(const Audio<T> rhs)const {
+		//Add operator +. returns reference to new object
+		Audio<T>& operator+(const Audio<T>& rhs)const {
 			//Add two sound files of same sample rate and length etc. Clip to prevent saturation
 			cout << "Adding the two together" << endl;
 			int limit = (int(std::numeric_limits<T>::max()));
@@ -103,10 +103,31 @@ class Audio{
 	        }
 
 	        cout << "Done adding!" << endl;
-	        return sum;
+	        return &sum;
 		}
 
-		//
+		// | Concatenate operator. Returns a reference to new object
+		Audio<T>& operator|(const Audio<T>& rhs)const {
+			//Concatenate two audio files with same sampling, sample size, and mono/stereo settings
+			cout << "Concatenating the two together" << endl;
+
+			//new object using copy constructor. copy this object and do modifications on the copy and return the copy
+	        Audio<T> concat(*this);
+
+	        //resize the length of concat data vector to be able to accommodate the sum of the two operands
+	        concat.data.resize(data.size() + rhs.data.size());
+
+	        //number of samples too
+	        concat.samples = samples + rhs.samples;
+
+	        //add rhs data array to the other half of concat.data
+	        for (int i = samples; i < concat.samples; i++) {
+	            concat.data[i] = rhs.data[i - samples];
+	        }
+
+	        cout << "Done concatenating" << endl;
+	        return &concat;
+	    }
 
 		/*---------------Functor Operators-------------------------------------*/
 
