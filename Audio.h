@@ -26,7 +26,7 @@ template <typename T>
 class Audio{
 	//private variables
 	private:
-	    std::vector<T> data;	//to hold the audio bytes
+	    //std::vector<T> data;	//to hold the audio bytes
 	    int sampling_rate;
 	    long samples;
 	    int bits;
@@ -35,6 +35,7 @@ class Audio{
 
 	//public methods. Methods are defined in this .h file as well since its a templated class
 	public:
+		std::vector<T> data;	//to hold the audio bytes
 
 		/* --------------The Six Special Member Constructors------------------*/
 
@@ -103,7 +104,7 @@ class Audio{
 	        }
 
 	        cout << "Done adding!" << endl;
-	        return &sum;
+	        return sum;
 		}
 
 		// | Concatenate operator. Returns a reference to new object
