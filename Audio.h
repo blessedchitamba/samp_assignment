@@ -129,6 +129,30 @@ class Audio{
 	        return &concat;
 	    }
 
+	    // ^ Cut operation. Returns reference to new object
+	    Audio<T>& operator^(std::pair<int, int> range)const {
+	    	//use the provided pair to cut the audio from the start and end points indicated
+	    	cout << "Cutting audio from start to end points" << endl;
+
+	        Audio<T> result;
+	        int r = range.second - range.first;
+			result.samples = samples - r;	//number of samples reduced
+	        result.data.resize(result.samples);	
+	        int count = 0;
+
+	        //loop and copy the out-of-range items into result		
+	        for (int i = 0; i < samples; i++) {		
+	            if (i < range.first || i > range.second) {		
+	                result.data[count++] = data[i];		
+	            }		
+	        }		
+
+	        cout << "Cut operation done" << endl;
+	        return &result;
+	    }
+
+	    //
+
 		/*---------------Functor Operators-------------------------------------*/
 
 };
