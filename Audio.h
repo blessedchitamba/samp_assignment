@@ -202,4 +202,18 @@ template<typename T> bool loadAudio(vector<T>& data, string filename, int numSam
 	cout << "Audio byte vector created" << endl;
 	//return data;
 }
+
+template<typename T> bool saveAudio(vector<T>& data, string outputFile, int numSamples) {
+
+		cout << "Beginning saveAudio" << endl;
+
+	    std::ofstream out;
+        out.open(outputFile, ios::binary | ios::out);
+        out.write((char*)(intptr_t)(&data[0]), numSamples);
+        out.close();
+
+        cout << "output written" << endl;
+}
+
+/*------------END--------------*/
 #endif
