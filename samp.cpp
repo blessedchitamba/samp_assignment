@@ -58,8 +58,8 @@ int main(int argc, char * argv[])
 			{
 				//create the two vectors to be passed into the Audio constructors
 				vector<i16> data1, data2;
-				loadAudio(&data1, soundFile1, numSamples, numChannels);
-				loadAudio(&data2, soundFile2, numSamples, numChannels);
+				loadAudio(data1, soundFile1, numSamples, numChannels);
+				loadAudio(data2, soundFile2, numSamples, numChannels);
 				cout << "Vectors created and loaded" << endl;
 
 				//create the two Audio objects and the result object
@@ -76,8 +76,9 @@ int main(int argc, char * argv[])
 			else
 			{
 				//create the two vectors to be passed into the Audio constructors
-				vector<i8> data1 = loadAudio(soundFile1, numSamples, numChannels);
-				vector<i8> data2 = loadAudio(soundFile2, numSamples, numChannels);
+				vector<i8> data1, data2;
+				loadAudio(data1, soundFile1, numSamples, numChannels);
+				loadAudio(data2, soundFile2, numSamples, numChannels);
 				cout << "Vectors created" << endl;
 
 				//create the two Audio objects and the result object
