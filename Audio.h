@@ -195,6 +195,8 @@ template<typename T> bool loadAudio(vector<T>& data, string filename, int numSam
     //allocate space of size numSamples in the vector then read into it
     data.reserve(numSamples);
     ifs.read((char*)(intptr_t)data[0], numSamples);
+
+    cout << "Size of vector in loadAudio() is " << data.size() << endl;
 	
 	cout << "Audio byte vector created" << endl;
 	//return data;
