@@ -151,7 +151,25 @@ class Audio{
 	        return &result;
 	    }
 
-	    //
+	    // * Volume factor 
+	    Audio<T>& operator*(std::pair<float, float> F)const {
+	    	//For mono channel, use the first value in the pair to perform the operation. Multiply each 
+	    	//sample value by the pair value. Take note of limits too.
+	    	cout << "Volume factor operation starting" << endl;
+
+	        Audio<T> result(*this);
+
+	        //loop through and multiply
+	        int value;
+			for (int i = 0; i < result.samples; i++) {
+	            value = data[i] * F.first;		
+	            result.data[i] = (value > limit) ? limit : value;		//saturation limits
+	        }
+
+	        cout << "Volume factor done" << endl;
+	        return &result;
+	    }
+
 
 		/*---------------Functor Operators-------------------------------------*/
 
