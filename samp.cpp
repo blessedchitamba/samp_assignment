@@ -57,9 +57,10 @@ int main(int argc, char * argv[])
 			if(numBits==16)
 			{
 				//create the two vectors to be passed into the Audio constructors
-				vector<i16> data1 = loadAudio(soundFile1, numSamples, numChannels);
-				vector<i16> data2 = loadAudio(soundFile2, numSamples, numChannels);
-				cout << "Vectors created" << endl;
+				vector<i16> data1, data2;
+				loadAudio(&data1, soundFile1, numSamples, numChannels);
+				loadAudio(&data2, soundFile2, numSamples, numChannels);
+				cout << "Vectors created and loaded" << endl;
 
 				//create the two Audio objects and the result object
 				Audio<i16> a1(data1, sampleRate, numBits);

@@ -177,10 +177,10 @@ class Audio{
 
 
 //loadAudio and saveAudio template functions
-template<typename T> vector<T> loadAudio(string filename, int numSamples, int numChannels) {
+template<typename T> bool loadAudio(vector<T>& data, string filename, int numSamples, int numChannels) {
 	//implement here
 	cout << "Beginning loadAudio.." << endl;
-	vector<T> data;
+	//vector<T> data;
 
     std::ifstream ifs;
     ifs.open(filename, ios::binary);
@@ -193,9 +193,9 @@ template<typename T> vector<T> loadAudio(string filename, int numSamples, int nu
 
     //allocate space of size numSamples in the vector then read into it
     data.reserve(numSamples);
-    ifs.read((char*) &data[0], numSamples);
+    ifs.read((char*) data[0], numSamples);
 	
 	cout << "Audio byte vector created" << endl;
-	return data;
+	//return data;
 }
 #endif
