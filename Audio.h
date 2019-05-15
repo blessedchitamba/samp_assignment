@@ -70,7 +70,7 @@ class Audio{
 		}
 
 		//Move Constructor
-		Audio(Audio && rhs) : sampling_rate(move(rhs.sampling_rate)), bits(move(rhs.bits)), data(move(rhs.data), channels(1)) {
+		Audio(Audio && rhs) : sampling_rate(move(rhs.sampling_rate)), bits(move(rhs.bits)), data(move(rhs.data)), channels(1) {
 			std::cout << "Move constructor called " << std::endl;
 			rhs.data.clear();
 		}
@@ -194,7 +194,7 @@ template<typename T> bool loadAudio(vector<T>& data, string filename, int numSam
 
     //allocate space of size numSamples in the vector then read into it
     data.reserve(numSamples);
-    ifs.read((char*) data[0], numSamples);
+    ifs.read((char*)(intptr_t)data[0], numSamples);
 	
 	cout << "Audio byte vector created" << endl;
 	//return data;
