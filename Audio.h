@@ -45,7 +45,7 @@ class Audio{
 		}
 
 		//Destructor
-		~Audio();
+		~Audio() {};
 
 		//Copy Constructor
 		Audio(const Audio & rhs) : sampling_rate(rhs.sampling_rate), bits(rhs.bits), channels(1), data(rhs.data) {
@@ -89,8 +89,8 @@ class Audio{
 
 		/* --------------Overloaded Operators----------------------------------*/
 
-		//Add operator +. returns reference to new object
-		Audio<T>& operator+(const Audio<T>& rhs)const {
+		//Add operator +.
+		Audio<T> operator+(const Audio<T>& rhs)const {
 			//Add two sound files of same sample rate and length etc. Clip to prevent saturation
 			cout << "Adding the two together" << endl;
 			int limit = (int(std::numeric_limits<T>::max()));
@@ -107,8 +107,8 @@ class Audio{
 	        return sum;
 		}
 
-		// | Concatenate operator. Returns a reference to new object
-		Audio<T>& operator|(const Audio<T>& rhs)const {
+		// | Concatenate operator.
+		Audio<T> operator|(const Audio<T>& rhs)const {
 			//Concatenate two audio files with same sampling, sample size, and mono/stereo settings
 			cout << "Concatenating the two together" << endl;
 
@@ -127,11 +127,11 @@ class Audio{
 	        }
 
 	        cout << "Done concatenating" << endl;
-	        return &concat;
+	        return concat;
 	    }
 
-	    // ^ Cut operation. Returns reference to new object
-	    Audio<T>& operator^(std::pair<int, int> range)const {
+	    // ^ Cut operation.
+	    Audio<T> operator^(std::pair<int, int> range)const {
 	    	//use the provided pair to cut the audio from the start and end points indicated
 	    	cout << "Cutting audio from start to end points" << endl;
 
@@ -149,11 +149,11 @@ class Audio{
 	        }		
 
 	        cout << "Cut operation done" << endl;
-	        return &result;
+	        return result;
 	    }
 
 	    // * Volume factor 
-	    Audio<T>& operator*(std::pair<float, float> F)const {
+	    Audio<T> operator*(std::pair<float, float> F)const {
 	    	//For mono channel, use the first value in the pair to perform the operation. Multiply each 
 	    	//sample value by the pair value. Take note of limits too.
 	    	cout << "Volume factor operation starting" << endl;
@@ -168,7 +168,7 @@ class Audio{
 	        }
 
 	        cout << "Volume factor done" << endl;
-	        return &result;
+	        return result;
 	    }
 
 
