@@ -88,6 +88,24 @@ class Audio{
 
 		/* --------------Overloaded Operators----------------------------------*/
 
+		//Add operator +
+		Audio<T> operator+(const Audio<T> rhs)const {
+			//Add two sound files of same sample rate and length etc. Clip to prevent saturation
+			cout << "Adding the two together" << endl;
+			int limit = (int(std::numeric_limits<T>::max()));
+
+			//new object using copy constructor. copy this object and do modifications on the copy and return the copy
+	        Audio<T> sum(*this);
+	        int value;
+	        for (int i = 0; i < sum.samples; ++i) {
+	            value = sum.data[i] + rhs.data[i];
+	            sum.data[i] = (value > limit ? limit : value);
+	        }
+
+	        cout << "Done adding!" << endl;
+	        return sum;
+		}
+
 		//
 
 		/*---------------Functor Operators-------------------------------------*/
