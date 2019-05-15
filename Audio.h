@@ -54,7 +54,7 @@ class Audio{
 		}
 
 		//Copy Assignment
-		Audio& operator=(const Audio & rhs) : sampling_rate(rhs.sampling_rate), bits(rhs.bits), channels(1), data(rhs.data){
+		Audio& operator=(const Audio & rhs){
 			std::cout << "Copy assignment called " << std::endl;
 			this->sampling_rate = rhs.sampling_rate;
 			this->bits = rhs.bits;
