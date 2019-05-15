@@ -60,6 +60,7 @@ int main(int argc, char * argv[])
 				vector<i16> data1, data2;
 				loadAudio(data1, soundFile1, numSamples, numChannels);
 				loadAudio(data2, soundFile2, numSamples, numChannels);
+				cout << "Size of data1 is " << data1.size() << endl;
 				cout << "Vectors created and loaded" << endl;
 
 				//create the two Audio objects and the result object

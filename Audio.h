@@ -191,10 +191,11 @@ template<typename T> bool loadAudio(vector<T>& data, string filename, int numSam
     int fileSize = ifs.tellg();
     ifs.seekg(0, ifs.beg);
     numSamples = fileSize / (sizeof (T) * numChannels);
+    cout << "Number of samples is " << numSamples << endl;
 
     //allocate space of size numSamples in the vector then read into it
-    data.reserve(numSamples);
-    ifs.read((char*)(intptr_t)data[0], numSamples);
+    data.resize(numSamples);
+    ifs.read((char*)(intptr_t)&data[0], numSamples);
 
     cout << "Size of vector in loadAudio() is " << data.size() << endl;
 	
