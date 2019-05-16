@@ -175,6 +175,25 @@ class Audio{
 	    }
 
 
+	    /*----------------Other methods-----------------------------------------*/
+
+	    //range add. adds two segments of two files together
+	    Audio<T> radd(const Audio<T>& rhs, std::pair<float, float> range1, std::pair<float, float> range2) const {
+	        Audio<T> result(*this);
+	        result.data.resize(range1.second - range1.first);
+
+	        //calculate ranges from the formula Length of the audio clip in seconds = NumberOfSamples / (float) samplingRate
+	        std::pair<int, int> r1(int(range1.first * sampling_rate), int(range1.second * sampling_rate));
+	        std::pair<int, int> r2(int(range2.first * rhs.sampling_rate), int(range2.second * rhs.sampling_rate));
+
+	        //use the ^ operator to do the cuts for each
+	        Audio<T> a1 = result^r1;
+	        Audio<T> a2 = rhs^r2;
+
+	        //return the sum of both
+	        return a1 + a2;
+    	}
+
 		/*---------------Functor Operators-------------------------------------*/
 
 };
