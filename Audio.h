@@ -205,20 +205,21 @@ template<typename T> bool loadAudio(vector<T>& data, string filename, int numSam
 	//return data;
 }
 
-template<typename T> bool saveAudio(vector<T>& data, string outputFile, int numSamples) {
+template<typename T> bool saveAudio(vector<T>& data, string outputFile, int numSamples, int numChannels) {
 
 		cout << "Beginning saveAudio" << endl;
 
 	    std::ofstream out;
 	   cout << "Size of result data in saveAudio is " << data.size() << endl;
-	   cout << "Element 1 is " << data[4] << endl;
-	   int fileSize = data.size()*sizeof(T)*1;
+	   //cout << "Element 1 is " << data[4] << endl;
+	   int fileSize = data.size()*sizeof(T)*numChannels;
         out.open(outputFile, ios::binary | ios::out);
         out.write(reinterpret_cast<char*>(&data[0]), fileSize);
         out.close();
 
         cout << "output written" << endl;
 }
+
 
 /*------------END--------------*/
 #endif
