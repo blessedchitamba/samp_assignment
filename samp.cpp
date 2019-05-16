@@ -103,7 +103,7 @@ int main(int argc, char * argv[])
 			if(numBits==16)
 			{
 				//create the two vectors to be passed into the Audio constructors
-				vector<std::pair<i16, i16> >> data1, data2;
+				vector<std::pair<i16, i16> > data1, data2;
 				loadAudio(data1, soundFile1, numSamples1, numChannels);
 				loadAudio(data2, soundFile2, numSamples2, numChannels);
 				//cout << "Size of data1 is " << data1.size() << endl;
@@ -122,7 +122,7 @@ int main(int argc, char * argv[])
 			else
 			{
 				//create the two vectors to be passed into the Audio constructors
-				vector<std::pair<i8, i8> >> data1, data2;
+				vector<std::pair<i8, i8> > data1, data2;
 				loadAudio(data1, soundFile1, numSamples1, numChannels);
 				loadAudio(data2, soundFile2, numSamples2, numChannels);
 				//cout << "Size of data1 is " << data1.size() << endl;
