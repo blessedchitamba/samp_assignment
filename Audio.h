@@ -426,7 +426,7 @@ template<typename T> bool loadAudio(vector< std::pair<T, T> >& data, string file
     ifs.seekg(0, ifs.end);
     int fileSize = ifs.tellg();
     ifs.seekg(0, ifs.beg);
-    cout << "filesize is "<< filesize << ", size of T is " << sizeof(T) <<", numChannels is " << numChannels << endl;
+    cout << "filesize is "<< fileSize << ", size of T is " << sizeof(T) <<", numChannels is " << numChannels << endl;
     numSamples = fileSize / (sizeof (T) * numChannels);
     cout << "Number of samples is " << numSamples << endl;
 
