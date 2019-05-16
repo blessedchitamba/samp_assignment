@@ -371,7 +371,7 @@ class Audio<std::pair<T, T>>{
 	    	//sample value by the pair value. Take note of limits too.
 	    	cout << "Volume factor operation starting" << endl;
 
-	        Audio<std::pair<T, T>>> result(*this);
+	        Audio<std::pair<T, T>> result(*this);
 
 	        //loop through and multiply
 	        int left, right;
