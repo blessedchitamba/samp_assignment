@@ -296,13 +296,13 @@ class Audio<std::pair<T, T>>{
 		/* --------------Overloaded Operators----------------------------------*/
 
 		//Add operator +.
-		Audio<std::vector< std::pair<T, T> >> operator+(const Audio<std::vector< std::pair<T, T> >>& rhs)const {
+		Audio< std::pair<T, T>> operator+(const Audio<std::pair<T, T>>& rhs)const {
 			//Add two sound files of same sample rate and length etc. Clip to prevent saturation
 			cout << "Adding the two together" << endl;
 			int limit = (int(std::numeric_limits<T>::max()));
 
 			//new object using copy constructor. copy this object and do modifications on the copy and return the copy
-	        Audio<std::vector< std::pair<T, T> >> sum(*this);
+	        Audio<std::pair<T, T>> sum(*this);
 	        int left, right;
 	        //cout << sum.data[4] << "and " << rhs.data[4] << endl;
 
@@ -320,12 +320,12 @@ class Audio<std::pair<T, T>>{
 		}
 
 		// | Concatenate operator.
-		Audio<std::vector< std::pair<T, T> >> operator|(const Audio<std::vector< std::pair<T, T> >>& rhs)const {
+		Audio<std::pair<T, T>> operator|(const Audio<std::pair<T, T>>& rhs)const {
 			//Concatenate two audio files with same sampling, sample size, and mono/stereo settings
 			cout << "Concatenating the two together" << endl;
 
 			//new object using copy constructor. copy this object and do modifications on the copy and return the copy
-	        Audio<std::vector< std::pair<T, T> >> concat(*this);
+	        Audio<std::pair<T, T>> concat(*this);
 
 	        //resize the length of concat data vector to be able to accommodate the sum of the two operands
 	        concat.data.resize(data.size() + rhs.data.size());
@@ -343,11 +343,11 @@ class Audio<std::pair<T, T>>{
 	    }
 
 	    // ^ Cut operation.
-	    Audio<std::vector< std::pair<T, T> >> operator^(std::pair<int, int> range)const {
+	    Audio<std::pair<T, T>> operator^(std::pair<int, int> range)const {
 	    	//use the provided pair to cut the audio from the start and end points indicated
 	    	cout << "Cutting audio from start to end points" << endl;
 
-	        Audio<std::vector< std::pair<T, T> >> result(*this);
+	        Audio<std::pair<T, T>> result(*this);
 	        int r = range.second - range.first;
 			result.samples = result.data.size() - r;	//number of samples reduced
 	        result.data.resize(result.samples);	
@@ -366,12 +366,12 @@ class Audio<std::pair<T, T>>{
 	    }
 
 	    // * Volume factor 
-	    Audio<std::vector< std::pair<T, T> >> operator*(std::pair<float, float> F)const {
+	    Audio<std::pair<T, T>> operator*(std::pair<float, float> F)const {
 	    	//For mono channel, use the first value in the pair to perform the operation. Multiply each 
 	    	//sample value by the pair value. Take note of limits too.
 	    	cout << "Volume factor operation starting" << endl;
 
-	        Audio<std::vector< std::pair<T, T> >> result(*this);
+	        Audio<std::pair<T, T>>> result(*this);
 
 	        //loop through and multiply
 	        int left, right;
