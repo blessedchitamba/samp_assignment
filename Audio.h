@@ -121,11 +121,11 @@ class Audio{
 	        concat.data.resize(data.size() + rhs.data.size());
 
 	        //number of samples too
-	        concat.samples = samples + rhs.samples;
+	        //concat.samples = samples + rhs.samples;
 
 	        //add rhs data array to the other half of concat.data
-	        for (int i = samples; i < concat.samples; i++) {
-	            concat.data[i] = rhs.data[i - samples];
+	        for (int i = data.size(); i < concat.data.size(); i++) {
+	            concat.data[i] = rhs.data[i - data.size()];
 	        }
 
 	        cout << "Done concatenating" << endl;
