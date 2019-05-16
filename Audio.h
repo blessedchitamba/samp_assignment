@@ -139,18 +139,19 @@ class Audio{
 
 	        Audio<T> result(*this);
 	        int r = range.second - range.first;
-			result.samples = samples - r;	//number of samples reduced
+			result.samples = result.data.size() - r;	//number of samples reduced
 	        result.data.resize(result.samples);	
 	        int count = 0;
 
 	        //loop and copy the out-of-range items into result		
-	        for (int i = 0; i < samples; i++) {		
+	        for (int i = 0; i < data.size(); i++) {		
 	            if (i < range.first || i > range.second) {		
 	                result.data[count++] = data[i];		
 	            }		
 	        }		
 
 	        cout << "Cut operation done" << endl;
+	        cout << "New size of result is " << result.data.size() << endl;
 	        return result;
 	    }
 
