@@ -319,7 +319,7 @@ class Audio<std::pair<T, T>>{
 	        return sum;
 		}
 
-		/*// | Concatenate operator.
+		// | Concatenate operator.
 		Audio<std::vector< std::pair<T, T> >> operator|(const Audio<std::vector< std::pair<T, T> >>& rhs)const {
 			//Concatenate two audio files with same sampling, sample size, and mono/stereo settings
 			cout << "Concatenating the two together" << endl;
@@ -342,7 +342,7 @@ class Audio<std::pair<T, T>>{
 	        return concat;
 	    }
 
-	    // ^ Cut operation.
+	    /*// ^ Cut operation.
 	    Audio<std::vector< std::pair<T, T> >> operator^(std::pair<int, int> range)const {
 	    	//use the provided pair to cut the audio from the start and end points indicated
 	    	cout << "Cutting audio from start to end points" << endl;
