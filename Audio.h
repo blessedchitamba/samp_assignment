@@ -165,7 +165,7 @@ class Audio{
 
 	        //loop through and multiply
 	        int value;
-			for (int i = 0; i < result.samples; i++) {
+			for (int i = 0; i < result.data.size(); i++) {
 	            value = data[i] * F.first;		
 	            result.data[i] = (value > limit) ? limit : value;		//saturation limits
 	        }
