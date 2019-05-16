@@ -389,9 +389,9 @@ class Audio<std::pair<T, T>>{
 	    }
 
 
-		/*---------------Functor Operators-------------------------------------
+		/*---------------Functor Operators-------------------------------------*/
 
-}; */
+}; 
 
 
 //loadAudio and saveAudio template functions
