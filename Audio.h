@@ -294,7 +294,7 @@ class Audio<std::pair<T, T>>{
 
 
 		/* --------------Overloaded Operators----------------------------------*/
-/*
+
 		//Add operator +.
 		Audio<std::vector< std::pair<T, T> >> operator+(const Audio<std::vector< std::pair<T, T> >>& rhs)const {
 			//Add two sound files of same sample rate and length etc. Clip to prevent saturation
@@ -319,7 +319,7 @@ class Audio<std::pair<T, T>>{
 	        return sum;
 		}
 
-		// | Concatenate operator.
+		/*// | Concatenate operator.
 		Audio<std::vector< std::pair<T, T> >> operator|(const Audio<std::vector< std::pair<T, T> >>& rhs)const {
 			//Concatenate two audio files with same sampling, sample size, and mono/stereo settings
 			cout << "Concatenating the two together" << endl;
