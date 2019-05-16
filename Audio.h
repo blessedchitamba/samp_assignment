@@ -365,7 +365,7 @@ class Audio<std::pair<T, T>>{
 	        return result;
 	    }
 
-	    /*// * Volume factor 
+	    // * Volume factor 
 	    Audio<std::vector< std::pair<T, T> >> operator*(std::pair<float, float> F)const {
 	    	//For mono channel, use the first value in the pair to perform the operation. Multiply each 
 	    	//sample value by the pair value. Take note of limits too.
