@@ -482,7 +482,7 @@ int main(int argc, char * argv[])
 				Audio<i8> a2(data2, sampleRate, numBits);
 				cout << "Audio objects created" << endl;
 
-				Audio<i16> result = a1.radd(a2, range1, range2);
+				Audio<i8> result = a1.radd(a2, range1, range2);
 				cout << "Result object created" << endl;
 				cout << "Size of result.data is " << result.data.size() << endl;
 				//result.setFile(out_file_name);
