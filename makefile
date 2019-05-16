@@ -13,7 +13,7 @@ samp.o: samp.cpp Audio.h
 	$(CC) -c -o samp.o samp.cpp -std=c++11
 
 run:
-	./samp -r 44100 -b 16 -c 1 -o testAdd.raw -add frogs18sec_44100_signed_16bit_mono.raw siren40sec_44100_signed_16bit_mono.raw
-
+	#./samp -r 44100 -b 16 -c 1 -o testConcat.raw -cat frogs18sec_44100_signed_16bit_mono.raw siren40sec_44100_signed_16bit_mono.raw
+	./samp -r 44100 -b 16 -c 1 -o testCut.raw -cut 396900 790000 frogs18sec_44100_signed_16bit_mono.raw
 clean:
 	rm -f -r *.o samp
