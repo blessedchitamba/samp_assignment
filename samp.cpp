@@ -160,8 +160,8 @@ int main(int argc, char * argv[])
 		cout << "Cut option selected.." << endl;
 
 		//take the range end limits and put them in a std::pair<>
-		int start = argv[++index];
-		int end = argv[++index];
+		int start = stoi(argv[++index]);
+		int end = stoi(argv[++index]);
 		std::pair<int, int> F(start, end);
 
 		soundFile1 = argv[++index];

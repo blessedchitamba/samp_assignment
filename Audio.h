@@ -99,7 +99,7 @@ class Audio{
 	        Audio<T> sum(*this);
 	        int value;
 	        cout << sum.data[4] << "and " << rhs.data[4] << endl;
-	        for (int i = 0; i < sum.samples; ++i) {
+	        for (int i = 0; i < sum.data.size(); ++i) {
 	            value = sum.data[i] + rhs.data[i];
 	            sum.data[i] = (value > limit ? limit : value);
 	        }
@@ -137,7 +137,7 @@ class Audio{
 	    	//use the provided pair to cut the audio from the start and end points indicated
 	    	cout << "Cutting audio from start to end points" << endl;
 
-	        Audio<T> result;
+	        Audio<T> result(*this);
 	        int r = range.second - range.first;
 			result.samples = samples - r;	//number of samples reduced
 	        result.data.resize(result.samples);	
