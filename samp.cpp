@@ -427,4 +427,110 @@ int main(int argc, char * argv[])
 			}	    	
 	    }
 	}
+
+
+	//ELSE IF OPTION IS RANGE ADD
+	if (option == "-radd") {
+		//implement add
+		cout << "Range Add option selected.." << endl;
+
+		//take the range end limits and put them in a std::pair<>
+		int r1 = stoi(argv[++index]);
+		int r2 = stoi(argv[++index]);
+		std::pair<int, int> range1(r1, r2);
+
+		int s1 = stoi(argv[++index]);
+		int s2 = stoi(argv[++index]);
+		std::pair<int, int> range2(s1, s2);
+
+		soundFile1 = argv[++index];
+		soundFile2 = argv[++index];
+
+		//do the logic of creating the appropriate template object depending on the command line options
+		if(numChannels==1)
+		{	
+			if(numBits==16)
+			{
+				//create the two vectors to be passed into the Audio constructors
+				vector<i16> data1, data2;
+				loadAudio(data1, soundFile1, numSamples1, numChannels);
+				loadAudio(data2, soundFile2, numSamples2, numChannels);
+				//cout << "Size of data1 is " << data1.size() << endl;
+				cout << "Vectors created and loaded" << endl;
+
+				//create the two Audio objects and the result object
+				Audio<i16> a1(data1, sampleRate, numBits);
+				Audio<i16> a2(data2, sampleRate, numBits);
+				cout << "Audio objects created" << endl;
+				//cout << "size of a1.data is " << a1.data.size() << endl;
+
+				Audio<i16> result = a1.radd(a2, range1, range2);
+				cout << "Result object created" << endl;
+				cout << "Size of result.data is " << result.data.size() << endl;
+				saveAudio(result.data, outputFile, numSamples1, numChannels);
+			}
+			else
+			{
+				//create the two vectors to be passed into the Audio constructors
+				vector<i8> data1, data2;
+				loadAudio(data1, soundFile1, numSamples1, numChannels);
+				loadAudio(data2, soundFile2, numSamples2, numChannels);
+				cout << "Vectors created" << endl;
+
+				//create the two Audio objects and the result object
+				Audio<i8> a1(data1, sampleRate, numBits);
+				Audio<i8> a2(data2, sampleRate, numBits);
+				cout << "Audio objects created" << endl;
+
+				Audio<i16> result = a1.radd(a2, range1, range2);
+				cout << "Result object created" << endl;
+				cout << "Size of result.data is " << result.data.size() << endl;
+				//result.setFile(out_file_name);
+				saveAudio(result.data, outputFile, numSamples1, numChannels);
+			}
+
+	    }
+
+	    /*else
+	    {
+			if(numBits==16)
+			{
+				//create the two vectors to be passed into the Audio constructors
+				vector<std::pair<i16, i16> > data1, data2;
+				loadAudio(data1, soundFile1, numSamples1, numChannels);
+				loadAudio(data2, soundFile2, numSamples2, numChannels);
+				//cout << "Size of data1 is " << data1.size() << endl;
+				cout << "Vectors created and loaded" << endl;
+
+				i16_pair a1(data1,sampleRate,numBits);
+				i16_pair a2(data2,sampleRate,numBits);
+				cout << "Audio objects created" << endl;
+
+				i16_pair result=a1 + a2;
+				cout << "Result object created" << endl;
+				cout << "Size of result.data is " << result.data.size() << endl;
+				//result.setFile(out_file_name);
+				saveAudio(result.data, outputFile, numSamples1, numChannels);
+			}
+			else
+			{
+				//create the two vectors to be passed into the Audio constructors
+				vector<std::pair<i8, i8> > data1, data2;
+				loadAudio(data1, soundFile1, numSamples1, numChannels);
+				loadAudio(data2, soundFile2, numSamples2, numChannels);
+				//cout << "Size of data1 is " << data1.size() << endl;
+				cout << "Vectors created and loaded" << endl;
+
+				i8_pair a1(data1,sampleRate,numBits);
+				i8_pair a2(data2,sampleRate,numBits);
+				cout << "Audio objects created" << endl;
+				
+				i8_pair result=a1 + a2;
+				cout << "Result object created" << endl;
+				cout << "Size of result.data is " << result.data.size() << endl;
+				//result.setFile(out_file_name);
+				saveAudio(result.data, outputFile, numSamples1, numChannels);
+			}	    	
+	    }*/
+	}
 }
