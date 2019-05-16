@@ -98,12 +98,14 @@ class Audio{
 			//new object using copy constructor. copy this object and do modifications on the copy and return the copy
 	        Audio<T> sum(*this);
 	        int value;
+	        cout << sum.data[4] << "and " << rhs.data[4] << endl;
 	        for (int i = 0; i < sum.samples; ++i) {
 	            value = sum.data[i] + rhs.data[i];
 	            sum.data[i] = (value > limit ? limit : value);
 	        }
 
 	        cout << "Done adding!" << endl;
+	        cout << "size of sum.data is " << sum.data.size() << endl;
 	        return sum;
 		}
 
@@ -208,8 +210,11 @@ template<typename T> bool saveAudio(vector<T>& data, string outputFile, int numS
 		cout << "Beginning saveAudio" << endl;
 
 	    std::ofstream out;
+	   cout << "Size of result data in saveAudio is " << data.size() << endl;
+	   cout << "Element 1 is " << data[4] << endl;
+	   int fileSize = data.size()*sizeof(T)*1;
         out.open(outputFile, ios::binary | ios::out);
-        out.write((char*)(intptr_t)(&data[0]), numSamples);
+        out.write(reinterpret_cast<char*>(&data[0]), fileSize);
         out.close();
 
         cout << "output written" << endl;
