@@ -206,12 +206,15 @@ class Audio{
 	    //lambda
 	   double rms() const {
 	        double result = std::accumulate(data.begin(), data.end(),
-	                0, [](int sum, int i) {
-	                    return sum + (i * i); });
-	        result /= numSamples;
+	                0, accumulate_function);
+	        result /= samples;
 	        result = pow(result, 0.5);
 	        cout << " RMS = " << result << endl;
 	        return result;
+	    }
+
+	    auto accumulate_function = [](double accumulator, const T& value) {
+	    	return accumulator + value^2;
 	    }
 
 		//function object to normalize

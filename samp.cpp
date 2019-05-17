@@ -649,8 +649,8 @@ int main(int argc, char * argv[])
 
 				a1.rms();
 				cout << "Result object created" << endl;
-				cout << "Size of result.data is " << result.data.size() << endl;
-				saveAudio(result.data, outputFile, numSamples1, numChannels);
+				cout << "Size of result.data is " << a1.data.size() << endl;
+				saveAudio(a1.data, outputFile, numSamples1, numChannels);
 			}
 			else
 			{
@@ -667,8 +667,8 @@ int main(int argc, char * argv[])
 
 				a1.rms();
 				cout << "Result object created" << endl;
-				cout << "Size of result.data is " << result.data.size() << endl;
-				saveAudio(result.data, outputFile, numSamples1, numChannels);
+				cout << "Size of result.data is " << a1.data.size() << endl;
+				saveAudio(a1.data, outputFile, numSamples1, numChannels);
 			}
 
 	    }
