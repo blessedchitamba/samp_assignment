@@ -491,7 +491,7 @@ int main(int argc, char * argv[])
 
 	    }
 
-	    /*else
+	    else
 	    {
 			if(numBits==16)
 			{
@@ -531,6 +531,95 @@ int main(int argc, char * argv[])
 				//result.setFile(out_file_name);
 				saveAudio(result.data, outputFile, numSamples1, numChannels);
 			}	    	
-	    }*/
+	    }
+	}
+
+	//ELSE IF OPTION IS REVERSE
+	else if (option == "-rev") {
+		//implement cut
+		cout << "Reverse option selected.." << endl;
+
+		soundFile1 = argv[++index];
+
+		//do the logic of creating the appropriate template object depending on the command line options
+		if(numChannels==1)
+		{	
+			if(numBits==16)
+			{
+				//create the vector to be passed into the Audio constructors
+				vector<i16> data1;
+				loadAudio(data1, soundFile1, numSamples1, numChannels);
+				cout << "Size of data1 is " << data1.size() << endl;
+				cout << "Vector created and loaded" << endl;
+
+				//create the Audio object and the result object
+				Audio<i16> a1(data1, sampleRate, numBits);
+				cout << "Audio object created" << endl;
+				//cout << "size of a1.data is " << a1.data.size() << endl;
+
+				Audio<i16> result = a1.rev();
+				cout << "Result object created" << endl;
+				cout << "Size of result.data is " << result.data.size() << endl;
+				saveAudio(result.data, outputFile, numSamples1, numChannels);
+			}
+			else
+			{
+				//create the vector to be passed into the Audio constructors
+				vector<i8> data1;
+				loadAudio(data1, soundFile1, numSamples1, numChannels);
+				cout << "Size of data1 is " << data1.size() << endl;
+				cout << "Vector created and loaded" << endl;
+
+				//create the Audio object and the result object
+				Audio<i8> a1(data1, sampleRate, numBits);
+				cout << "Audio object created" << endl;
+				//cout << "size of a1.data is " << a1.data.size() << endl;
+
+				Audio<i8> result = a1.rev();
+				cout << "Result object created" << endl;
+				cout << "Size of result.data is " << result.data.size() << endl;
+				saveAudio(result.data, outputFile, numSamples1, numChannels);
+			}
+
+	    }
+
+	    //else if two channels
+	    else
+	    {
+			if(numBits==16)
+			{
+				//create the two vectors to be passed into the Audio constructors
+				vector<std::pair<i16, i16> > data1;
+				loadAudio(data1, soundFile1, numSamples1, numChannels);
+				//cout << "Size of data1 is " << data1.size() << endl;
+				cout << "Vector created and loaded" << endl;
+
+				i16_pair a1(data1,sampleRate,numBits);
+				cout << "Audio object created" << endl;
+				
+				i16_pair result = a1.rev();
+				cout << "Result object created" << endl;
+				cout << "Size of result.data is " << result.data.size() << endl;
+				//result.setFile(out_file_name);
+				saveAudio(result.data, outputFile, numSamples1, numChannels);
+			}
+			else
+			{
+				//create the two vectors to be passed into the Audio constructors
+				vector<std::pair<i8, i8> > data1;
+				loadAudio(data1, soundFile1, numSamples1, numChannels);
+				//cout << "Size of data1 is " << data1.size() << endl;
+				cout << "Vector created and loaded" << endl;
+
+				i8_pair a1(data1,sampleRate,numBits);
+				cout << "Audio objects created" << endl;
+				
+				i8_pair result = a1.rev();
+				cout << "Result object created" << endl;
+				cout << "Size of result.data is " << result.data.size() << endl;
+				//result.setFile(out_file_name);
+				saveAudio(result.data, outputFile, numSamples1, numChannels);
+			}	    	
+	    }
 	}
 }

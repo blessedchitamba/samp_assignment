@@ -194,6 +194,13 @@ class Audio{
 	        return a1 + a2;
     	}
 
+    	//reverse operator using STL reverse
+    	Audio<T> rev() const {
+	        Audio<T> result(*this);
+	        std::reverse(result.data.begin(), result.data.end());
+	        return result;
+	    }
+
 		/*---------------Functor Operators-------------------------------------*/
 
 };
@@ -407,6 +414,14 @@ class Audio<std::pair<T, T>>{
 	        return result;
 	    }
 
+	    /*----------------Other methods-------------------------------------*/
+
+	    //reverse method with STL reverse
+	    Audio< std::pair<T, T > > rev() {
+	        Audio< std::pair<T, T > > result(*this);
+	        std::reverse(result.data.begin(), result.data.end());
+	        return result;
+	    }
 
 		/*---------------Functor Operators-------------------------------------*/
 
