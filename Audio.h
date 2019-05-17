@@ -182,9 +182,8 @@ class Audio{
 	        Audio<T> result(*this);
 	        result.data.resize(range1.second - range1.first);
 
-	        //calculate ranges from the formula Length of the audio clip in seconds = NumberOfSamples / (float) samplingRate
-	        std::pair<int, int> r1(int(range1.first * sampling_rate), int(range1.second * sampling_rate));
-	        std::pair<int, int> r2(int(range2.first * rhs.sampling_rate), int(range2.second * rhs.sampling_rate));
+	        std::pair<int, int> r1(int(range1.first), int(range1.second));
+	        std::pair<int, int> r2(int(range2.first), int(range2.second));
 
 	        //use the ^ operator to do the cuts for each
 	        Audio<T> a1 = result^r1;
@@ -204,6 +203,12 @@ class Audio{
 		/*---------------Functor Operators-------------------------------------*/
 
 	    //lambda
+
+	    static constexpr auto accumulate_function = [](double accumulator, const T& value) {
+	         return accumulator + pow(value, 2);
+	     };
+
+	                                
 	   double rms() const {
 	        double result = std::accumulate(data.begin(), data.end(),
 	                0, accumulate_function);
@@ -211,10 +216,6 @@ class Audio{
 	        result = pow(result, 0.5);
 	        cout << " RMS = " << result << endl;
 	        return result;
-	    }
-
-	    auto accumulate_function = [](double accumulator, const T& value) {
-	    	return accumulator + value^2;
 	    }
 
 		//function object to normalize
@@ -237,7 +238,7 @@ class Audio{
 	    Audio<T> norm(float des)const {
 	        Audio<T> result(*this);
 	        std::transform(result.data.begin(), result.data.end(), result.data.begin(), normalize<T>(rms(), des));
-	    }
+	    } 
 };
 
 
