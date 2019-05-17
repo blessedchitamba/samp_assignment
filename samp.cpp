@@ -49,9 +49,6 @@ int main(int argc, char * argv[])
 		cout << "Add option selected.." << endl;
 		soundFile1 = argv[++index];
 		soundFile2 = argv[++index];
-		
-		cout<<soundFile1<<endl;
-		cout<<soundFile2<<endl;
 
 		//do the logic of creating the appropriate template object depending on the command line options
 		if(numChannels==1)
