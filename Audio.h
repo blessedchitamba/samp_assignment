@@ -98,14 +98,14 @@ class Audio{
 			//new object using copy constructor. copy this object and do modifications on the copy and return the copy
 	        Audio<T> sum(*this);
 	        int value;
-	        cout << sum.data[4] << "and " << rhs.data[4] << endl;
+	        //cout << sum.data[4] << "and " << rhs.data[4] << endl;
 	        for (int i = 0; i < sum.data.size(); ++i) {
 	            value = sum.data[i] + rhs.data[i];
 	            sum.data[i] = (value > limit ? limit : value);
 	        }
 
 	        cout << "Done adding!" << endl;
-	        cout << "size of sum.data is " << sum.data.size() << endl;
+	        //cout << "size of sum.data is " << sum.data.size() << endl;
 	        return sum;
 		}
 
@@ -151,7 +151,7 @@ class Audio{
 	        }		
 
 	        cout << "Cut operation done" << endl;
-	        cout << "New size of result is " << result.data.size() << endl;
+	        //cout << "New size of result is " << result.data.size() << endl;
 	        return result;
 	    }
 
@@ -203,7 +203,7 @@ class Audio{
 		/*---------------Functor Operators-------------------------------------*/
 
 	    //lambda
-
+/*
 	    static constexpr auto accumulate_function = [](double accumulator, const T& value) {
 	         return accumulator + pow(value, 2);
 	     };
@@ -238,7 +238,7 @@ class Audio{
 	    Audio<T> norm(float des)const {
 	        Audio<T> result(*this);
 	        std::transform(result.data.begin(), result.data.end(), result.data.begin(), normalize<T>(rms(), des));
-	    } 
+	    } */
 };
 
 
@@ -256,14 +256,14 @@ template<typename T> bool loadAudio(vector<T>& data, string filename, int numSam
     int fileSize = ifs.tellg();
     ifs.seekg(0, ifs.beg);
     numSamples = fileSize / (sizeof (T) * numChannels);
-    cout << "Number of samples is " << numSamples << endl;
+    //cout << "Number of samples is " << numSamples << endl;
 
     //allocate space of size numSamples in the vector then read into it
     data.resize(numSamples);
     ifs.read((char*)(intptr_t)&data[0], numSamples);
     ifs.close();
 
-    cout << "Size of vector in loadAudio() is " << data.size() << endl;
+    //cout << "Size of vector in loadAudio() is " << data.size() << endl;
 	
 	cout << "Audio byte vector created" << endl;
 	//return data;
@@ -274,7 +274,7 @@ template<typename T> bool saveAudio(vector<T>& data, string outputFile, int numS
 		cout << "Beginning saveAudio" << endl;
 
 	    std::ofstream out;
-	   cout << "Size of result data in saveAudio is " << data.size() << endl;
+	   //cout << "Size of result data in saveAudio is " << data.size() << endl;
 	   //cout << "Element 1 is " << data[4] << endl;
 	   int fileSize = data.size()*sizeof(T)*numChannels;
         out.open(outputFile, ios::binary | ios::out);
@@ -423,7 +423,7 @@ class Audio<std::pair<T, T>>{
 	        }		
 
 	        cout << "Cut operation done" << endl;
-	        cout << "New size of result is " << result.data.size() << endl;
+	        //cout << "New size of result is " << result.data.size() << endl;
 	        return result;
 	    }
 
@@ -459,6 +459,22 @@ class Audio<std::pair<T, T>>{
 	        return result;
 	    }
 
+	    //range add
+	    Audio<std::pair<T, T >> radd(const Audio<std::pair<T, T >>& rhs, std::pair<float, float> range1, std::pair<float, float> range2) const {
+	        Audio<std::pair<T, T >> result(*this);
+	        result.data.resize(range1.second - range1.first);
+
+	        std::pair<int, int> r1(int(range1.first), int(range1.second));
+	        std::pair<int, int> r2(int(range2.first), int(range2.second));
+
+	        //use the ^ operator to do the cuts for each
+	        Audio<std::pair<T, T >> a1 = result^r1;
+	        Audio<std::pair<T, T >> a2 = rhs^r2;
+
+	        //return the sum of both
+	        return a1 + a2;
+    	}
+
 		/*---------------Functor Operators-------------------------------------*/
 
 
@@ -478,9 +494,9 @@ template<typename T> bool loadAudio(vector< std::pair<T, T> >& data, string file
     ifs.seekg(0, ifs.end);
     int fileSize = ifs.tellg();
     ifs.seekg(0, ifs.beg);
-    cout << "filesize is "<< fileSize << ", size of T is " << sizeof(T) <<", numChannels is " << numChannels << endl;
+    //cout << "filesize is "<< fileSize << ", size of T is " << sizeof(T) <<", numChannels is " << numChannels << endl;
     numSamples = fileSize / (sizeof (T) * numChannels);
-    cout << "Number of samples is " << numSamples << endl;
+    //cout << "Number of samples is " << numSamples << endl;
 
     //allocate space of size numSamples in the vector then read into it
     data.resize(numSamples);
@@ -495,7 +511,7 @@ template<typename T> bool loadAudio(vector< std::pair<T, T> >& data, string file
     ifs.close();
     //ifs.read((char*)(intptr_t)&data[0], numSamples);
 
-    cout << "Size of vector in loadAudio() is " << data.size() << endl;
+    //cout << "Size of vector in loadAudio() is " << data.size() << endl;
 	
 	cout << "Audio byte vector created" << endl;
 	//return data;
@@ -506,7 +522,7 @@ template<typename T> bool saveAudio(vector< std::pair<T, T> >& data, string outp
 		cout << "Beginning saveAudio" << endl;
 
 	    std::ofstream out;
-	   cout << "Size of result data in saveAudio is " << data.size() << endl;
+	   //cout << "Size of result data in saveAudio is " << data.size() << endl;
 	   //cout << "Element 1 is " << data[4] << endl;
 	   int fileSize = data.size()*sizeof(T)*numChannels;
         out.open(outputFile, ios::binary | ios::out);

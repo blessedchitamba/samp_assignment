@@ -73,7 +73,7 @@ int main(int argc, char * argv[])
 
 				Audio<i16> result = a1 + a2;
 				cout << "Result object created" << endl;
-				cout << "Size of result.data is " << result.data.size() << endl;
+				//cout << "Size of result.data is " << result.data.size() << endl;
 				saveAudio(result.data, outputFile, numSamples1, numChannels);
 			}
 			else
@@ -91,7 +91,7 @@ int main(int argc, char * argv[])
 
 				Audio<i8> result = a1 + a2;
 				cout << "Result object created" << endl;
-				cout << "Size of result.data is " << result.data.size() << endl;
+				//cout << "Size of result.data is " << result.data.size() << endl;
 				//result.setFile(out_file_name);
 				saveAudio(result.data, outputFile, numSamples1, numChannels);
 			}
@@ -115,8 +115,7 @@ int main(int argc, char * argv[])
 
 				i16_pair result=a1 + a2;
 				cout << "Result object created" << endl;
-				cout << "Size of result.data is " << result.data.size() << endl;
-				//result.setFile(out_file_name);
+				//cout << "Size of result.data is " << result.data.size() << endl;
 				saveAudio(result.data, outputFile, numSamples1, numChannels);
 			}
 			else
@@ -134,7 +133,7 @@ int main(int argc, char * argv[])
 				
 				i8_pair result=a1 + a2;
 				cout << "Result object created" << endl;
-				cout << "Size of result.data is " << result.data.size() << endl;
+				//cout << "Size of result.data is " << result.data.size() << endl;
 				//result.setFile(out_file_name);
 				saveAudio(result.data, outputFile, numSamples1, numChannels);
 			}	    	
@@ -169,7 +168,7 @@ int main(int argc, char * argv[])
 
 				Audio<i16> result = a1|a2;
 				cout << "Result object created" << endl;
-				cout << "Size of result.data is " << result.data.size() << endl;
+				//cout << "Size of result.data is " << result.data.size() << endl;
 				saveAudio(result.data, outputFile, numSamples1+numSamples2, numChannels);
 			}
 			else
@@ -187,7 +186,7 @@ int main(int argc, char * argv[])
 
 				Audio<i8> result = a1|a2;
 				cout << "Result object created" << endl;
-				cout << "Size of result.data is " << result.data.size() << endl;
+				//cout << "Size of result.data is " << result.data.size() << endl;
 				//result.setFile(out_file_name);
 				saveAudio(result.data, outputFile, numSamples1+numSamples2, numChannels);
 			}
@@ -211,7 +210,7 @@ int main(int argc, char * argv[])
 
 				i16_pair result=a1|a2;
 				cout << "Result object created" << endl;
-				cout << "Size of result.data is " << result.data.size() << endl;
+				//cout << "Size of result.data is " << result.data.size() << endl;
 				//result.setFile(out_file_name);
 				saveAudio(result.data, outputFile, numSamples1, numChannels);
 			}
@@ -230,7 +229,7 @@ int main(int argc, char * argv[])
 				
 				i8_pair result=a1|a2;
 				cout << "Result object created" << endl;
-				cout << "Size of result.data is " << result.data.size() << endl;
+				//cout << "Size of result.data is " << result.data.size() << endl;
 				//result.setFile(out_file_name);
 				saveAudio(result.data, outputFile, numSamples1, numChannels);
 			}	    	
@@ -269,7 +268,7 @@ int main(int argc, char * argv[])
 
 				Audio<i16> result = a1^F;
 				cout << "Result object created" << endl;
-				cout << "Size of result.data is " << result.data.size() << endl;
+				//cout << "Size of result.data is " << result.data.size() << endl;
 				saveAudio(result.data, outputFile, numSamples1, numChannels);
 			}
 			else
@@ -287,7 +286,7 @@ int main(int argc, char * argv[])
 
 				Audio<i8> result = a1^F;
 				cout << "Result object created" << endl;
-				cout << "Size of result.data is " << result.data.size() << endl;
+				//cout << "Size of result.data is " << result.data.size() << endl;
 				saveAudio(result.data, outputFile, numSamples1, numChannels);
 			}
 
@@ -309,7 +308,7 @@ int main(int argc, char * argv[])
 
 				i16_pair result=a1^F;
 				cout << "Result object created" << endl;
-				cout << "Size of result.data is " << result.data.size() << endl;
+				//cout << "Size of result.data is " << result.data.size() << endl;
 				//result.setFile(out_file_name);
 				saveAudio(result.data, outputFile, numSamples1, numChannels);
 			}
@@ -326,7 +325,7 @@ int main(int argc, char * argv[])
 				
 				i8_pair result=a1^F;
 				cout << "Result object created" << endl;
-				cout << "Size of result.data is " << result.data.size() << endl;
+				//cout << "Size of result.data is " << result.data.size() << endl;
 				//result.setFile(out_file_name);
 				saveAudio(result.data, outputFile, numSamples1, numChannels);
 			}	    	
@@ -354,7 +353,7 @@ int main(int argc, char * argv[])
 				//create the vector to be passed into the Audio constructors
 				vector<i16> data1;
 				loadAudio(data1, soundFile1, numSamples1, numChannels);
-				cout << "Size of data1 is " << data1.size() << endl;
+				//cout << "Size of data1 is " << data1.size() << endl;
 				cout << "Vector created and loaded" << endl;
 
 				//create the Audio object and the result object
@@ -364,7 +363,7 @@ int main(int argc, char * argv[])
 
 				Audio<i16> result = a1*F;
 				cout << "Result object created" << endl;
-				cout << "Size of result.data is " << result.data.size() << endl;
+				//cout << "Size of result.data is " << result.data.size() << endl;
 				saveAudio(result.data, outputFile, numSamples1, numChannels);
 			}
 			else
@@ -372,7 +371,7 @@ int main(int argc, char * argv[])
 				//create the vector to be passed into the Audio constructors
 				vector<i8> data1;
 				loadAudio(data1, soundFile1, numSamples1, numChannels);
-				cout << "Size of data1 is " << data1.size() << endl;
+				//cout << "Size of data1 is " << data1.size() << endl;
 				cout << "Vector created and loaded" << endl;
 
 				//create the Audio object and the result object
@@ -382,7 +381,7 @@ int main(int argc, char * argv[])
 
 				Audio<i8> result = a1*F;
 				cout << "Result object created" << endl;
-				cout << "Size of result.data is " << result.data.size() << endl;
+				//cout << "Size of result.data is " << result.data.size() << endl;
 				saveAudio(result.data, outputFile, numSamples1, numChannels);
 			}
 
@@ -404,7 +403,7 @@ int main(int argc, char * argv[])
 
 				i16_pair result=a1*F;
 				cout << "Result object created" << endl;
-				cout << "Size of result.data is " << result.data.size() << endl;
+				//cout << "Size of result.data is " << result.data.size() << endl;
 				//result.setFile(out_file_name);
 				saveAudio(result.data, outputFile, numSamples1, numChannels);
 			}
@@ -421,7 +420,7 @@ int main(int argc, char * argv[])
 				
 				i8_pair result=a1*F;
 				cout << "Result object created" << endl;
-				cout << "Size of result.data is " << result.data.size() << endl;
+				//cout << "Size of result.data is " << result.data.size() << endl;
 				//result.setFile(out_file_name);
 				saveAudio(result.data, outputFile, numSamples1, numChannels);
 			}	    	
@@ -466,7 +465,7 @@ int main(int argc, char * argv[])
 
 				Audio<i16> result = a1.radd(a2, range1, range2);
 				cout << "Result object created" << endl;
-				cout << "Size of result.data is " << result.data.size() << endl;
+				//cout << "Size of result.data is " << result.data.size() << endl;
 				saveAudio(result.data, outputFile, numSamples1, numChannels);
 			}
 			else
@@ -484,7 +483,7 @@ int main(int argc, char * argv[])
 
 				Audio<i8> result = a1.radd(a2, range1, range2);
 				cout << "Result object created" << endl;
-				cout << "Size of result.data is " << result.data.size() << endl;
+				//cout << "Size of result.data is " << result.data.size() << endl;
 				//result.setFile(out_file_name);
 				saveAudio(result.data, outputFile, numSamples1, numChannels);
 			}
@@ -508,7 +507,7 @@ int main(int argc, char * argv[])
 
 				i16_pair result=a1 + a2;
 				cout << "Result object created" << endl;
-				cout << "Size of result.data is " << result.data.size() << endl;
+				//cout << "Size of result.data is " << result.data.size() << endl;
 				//result.setFile(out_file_name);
 				saveAudio(result.data, outputFile, numSamples1, numChannels);
 			}
@@ -527,7 +526,7 @@ int main(int argc, char * argv[])
 				
 				i8_pair result=a1 + a2;
 				cout << "Result object created" << endl;
-				cout << "Size of result.data is " << result.data.size() << endl;
+				//cout << "Size of result.data is " << result.data.size() << endl;
 				//result.setFile(out_file_name);
 				saveAudio(result.data, outputFile, numSamples1, numChannels);
 			}	    	
@@ -549,7 +548,7 @@ int main(int argc, char * argv[])
 				//create the vector to be passed into the Audio constructors
 				vector<i16> data1;
 				loadAudio(data1, soundFile1, numSamples1, numChannels);
-				cout << "Size of data1 is " << data1.size() << endl;
+				//cout << "Size of data1 is " << data1.size() << endl;
 				cout << "Vector created and loaded" << endl;
 
 				//create the Audio object and the result object
@@ -559,7 +558,7 @@ int main(int argc, char * argv[])
 
 				Audio<i16> result = a1.rev();
 				cout << "Result object created" << endl;
-				cout << "Size of result.data is " << result.data.size() << endl;
+				//cout << "Size of result.data is " << result.data.size() << endl;
 				saveAudio(result.data, outputFile, numSamples1, numChannels);
 			}
 			else
@@ -567,7 +566,7 @@ int main(int argc, char * argv[])
 				//create the vector to be passed into the Audio constructors
 				vector<i8> data1;
 				loadAudio(data1, soundFile1, numSamples1, numChannels);
-				cout << "Size of data1 is " << data1.size() << endl;
+				//cout << "Size of data1 is " << data1.size() << endl;
 				cout << "Vector created and loaded" << endl;
 
 				//create the Audio object and the result object
@@ -577,7 +576,7 @@ int main(int argc, char * argv[])
 
 				Audio<i8> result = a1.rev();
 				cout << "Result object created" << endl;
-				cout << "Size of result.data is " << result.data.size() << endl;
+				//cout << "Size of result.data is " << result.data.size() << endl;
 				saveAudio(result.data, outputFile, numSamples1, numChannels);
 			}
 
@@ -599,7 +598,7 @@ int main(int argc, char * argv[])
 				
 				i16_pair result = a1.rev();
 				cout << "Result object created" << endl;
-				cout << "Size of result.data is " << result.data.size() << endl;
+				//cout << "Size of result.data is " << result.data.size() << endl;
 				//result.setFile(out_file_name);
 				saveAudio(result.data, outputFile, numSamples1, numChannels);
 			}
@@ -616,7 +615,7 @@ int main(int argc, char * argv[])
 				
 				i8_pair result = a1.rev();
 				cout << "Result object created" << endl;
-				cout << "Size of result.data is " << result.data.size() << endl;
+				//cout << "Size of result.data is " << result.data.size() << endl;
 				//result.setFile(out_file_name);
 				saveAudio(result.data, outputFile, numSamples1, numChannels);
 			}	    	
@@ -624,7 +623,7 @@ int main(int argc, char * argv[])
 	}
 
 
-	//ELSE IF OPTION IS RMS
+	/*//ELSE IF OPTION IS RMS
 	else if (option == "-rms") {
 		//implement cut
 		cout << "RMS option selected.." << endl;
@@ -672,5 +671,5 @@ int main(int argc, char * argv[])
 			}
 
 	    }
-	 }
+	 }*/
 }
