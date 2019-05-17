@@ -203,6 +203,38 @@ class Audio{
 
 		/*---------------Functor Operators-------------------------------------*/
 
+	    //lambda
+	   double rms() const {
+	        double result = std::accumulate(data.begin(), data.end(),
+	                0, [](int sum, int i) {
+	                    return sum + (i * i); });
+	        result /= numSamples;
+	        result = pow(result, 0.5);
+	        cout << " RMS = " << result << endl;
+	        return result;
+	    }
+
+		//function object to normalize
+	    template<typename U>
+	    class normalize {
+	    private:
+	        float rootMeanSquare;
+	        float d;
+	    public:
+
+	        normalize(float r, float _d) : rootMeanSquare(rms), d(_d) {
+	        }
+
+	        //overload () operator
+	        double operator()(const U& a) const {
+	            return a * (d / rootMeanSquare);
+	        }
+	    };
+
+	    Audio<T> norm(float des)const {
+	        Audio<T> result(*this);
+	        std::transform(result.data.begin(), result.data.end(), result.data.begin(), normalize<T>(rms(), des));
+	    }
 };
 
 
@@ -424,6 +456,7 @@ class Audio<std::pair<T, T>>{
 	    }
 
 		/*---------------Functor Operators-------------------------------------*/
+
 
 }; 
 
